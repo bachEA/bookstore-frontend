@@ -1,5 +1,7 @@
 Create a react frontend javascript for BACH VU bookstore project
 
+[![Coverage Status](https://coveralls.io/repos/github/EastAgile/bookstore_BachVu_React/badge.svg?branch=183/setup-CICD-frontend&t=itXsWt)](https://coveralls.io/github/EastAgile/bookstore_BachVu_React?branch=183/setup-CICD-frontend)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
