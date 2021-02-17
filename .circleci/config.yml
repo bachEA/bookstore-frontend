@@ -1,5 +1,4 @@
-version: 2.1
-
+version: 2.0
 
 jobs: 
   build: 
@@ -28,14 +27,23 @@ jobs:
               npm test
               npm run test -- --coverage
               npm run coveralls
-
- 
-
+  deploy:
+    docker:
+      - image: circleci/python:3.6
+    working_directory: ~/bookstore
+    steps:
+      - checkout
+      - run:
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git 183/setup-CICD-frontend:main -f
 workflows:
   version: 2
-  Build and Test:
+  Build and Deploy:
     jobs:
       - build
-
-
-
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: 183/setup-CICD-frontend 
