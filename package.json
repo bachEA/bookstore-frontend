@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.6.0",
     "eslint": "^7.18.0",
     "lint": "^0.7.0",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.5.0",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
@@ -46,7 +48,6 @@
   "jest": {
     "collectCoverageFrom": [
       "src/App.js"
-
     ]
   }
 }
