@@ -10,7 +10,7 @@ function Book({ book }) {
         <Card.Title> {book.fields.title}</Card.Title>
         <Card.Text> {book.fields.description}</Card.Text>
         <Card.Text>
-          {book.fields.total_rating_value} from {book.fields.total_rating_count}{' '}
+          {book.fields.total_rating_value} from {book.fields.total_rating_count}
           reviews
         </Card.Text>
         <Card.Text> Price {book.fields.unit_price}</Card.Text>

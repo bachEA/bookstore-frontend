@@ -1,5 +1,6 @@
 import Book from '../components/Book'
 import books from '../books'
+import Rating from '../components/Rating'
 
 import { Link } from 'react-router-dom'
 import { Col, Row, Card } from 'react-bootstrap'
@@ -21,11 +22,17 @@ function SingleBookPage({ match }) {
           <Card className='my-3 p-3 rounded'>
             <Card.Title> {book.fields.title}</Card.Title>
             <Card.Text> {book.fields.description}</Card.Text>
-            <Card.Text>
-              {book.fields.total_rating_value} from{' '}
-              {book.fields.total_rating_count} reviews
-            </Card.Text>
-            <Card.Text> Price {book.fields.unit_price}</Card.Text>
+          </Card>
+        </Col>
+        <Col md={3}>
+          <Card className='my-3 p-3 rounded'>
+            <Card.Title> {book.fields.unit_price} $</Card.Title>
+            <Card.Title> Customer reviews </Card.Title>
+            <Rating
+              value={book.fields.total_rating_value}
+              text={`${book.fields.total_rating_count} ratings`}
+              color={'#f8e825'}
+            />
           </Card>
         </Col>
       </Row>
