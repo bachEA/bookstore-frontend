@@ -25,13 +25,15 @@ function SingleBookPage({ match }) {
   console.log(book)
   console.log(id)
 
+  const image = 'http://127.0.0.1:8000' + String(book.image)
+
   return (
     <div>
       <h1> This is a single book page</h1>
       <Row>
         <Col md={6}>
           <Card className='my-3 p-3 rounded'>
-            <Card.Img src={book.photo}></Card.Img>
+            <Card.Img src={image}></Card.Img>
           </Card>
         </Col>
         <Col md={3}>

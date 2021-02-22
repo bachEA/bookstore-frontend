@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-import { Container, Row, Col } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import Book from '../components/Book'
 import axios from 'axios'
-
-import manybooks from '../books'
 
 function HomePage() {
   const [books, setBooks] = useState([])
@@ -25,9 +23,11 @@ function HomePage() {
   return (
     <div>
       <h1> Latest books</h1>
+
       <Row>
         {books.map((book) => (
-          <Col sm={12} md={6} lg={4} xl={4}>
+          // declare size of the column depending on the client screen size
+          <Col sm={12} md={6} lg={4} xl={3}>
             <Book book={book} />
           </Col>
         ))}

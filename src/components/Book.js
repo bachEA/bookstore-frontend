@@ -1,11 +1,14 @@
 import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function Book({ book }) {
+  const image = 'http://127.0.0.1:8000' + String(book.image)
   return (
     <Card className='my-3 p-3 rounded'>
-      <a href={`/books/${book.id}`}>
-        <Card.Img src={book.photo} />
-      </a>
+      <Link to={`/books/${book.id}`}>
+        {/* {console.log(image)} */}
+        <Card.Img src={image} />
+      </Link>
       <Card.Body>
         <Card.Title> {book.title}</Card.Title>
         <Card.Text> {book.description}</Card.Text>
