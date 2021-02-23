@@ -1,24 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import { Row, Col } from 'react-bootstrap'
 import Book from '../components/Book'
-import axios from 'axios'
+
+import { bookListAction } from '../actions/bookActions'
+
+import { useDispatch, useSelector } from 'react-redux'
 
 function HomePage() {
-  const [books, setBooks] = useState([])
-  const url = 'http://127.0.0.1:8000/api/v1/books/'
+  const dispatch = useDispatch()
+  const bookList = useSelector((state) => state.bookList)
+
+  const { loading, books } = bookList
+
   useEffect(() => {
-    async function fetchBooks() {
-      const { data } = await axios.get(url)
-
-      setBooks(data)
-    }
-
-    fetchBooks()
-  }, [])
-
-  console.log(books)
-  console.log(books[0])
+    dispatch(bookListAction())
+  }, [dispatch])
 
   return (
     <div>
@@ -27,7 +24,7 @@ function HomePage() {
       <Row>
         {books.map((book) => (
           // declare size of the column depending on the client screen size
-          <Col sm={12} md={6} lg={4} xl={3}>
+          <Col key={book.id} sm={12} md={6} lg={4} xl={3}>
             <Book book={book} />
           </Col>
         ))}
