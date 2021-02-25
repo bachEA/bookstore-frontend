@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 
 import HomePage from './pages/HomePage'
+import ShoppingCartPage from './pages/ShoppingCartPage'
 import SingleBookPage from './pages/SingleBookPage'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <h1>Bach Vu bookstore project</h1>
           <Route path='/' component={HomePage} exact />
           <Route path='/books/:id' component={SingleBookPage} />
+          <Route path='/carts/:id' component={ShoppingCartPage} />
         </Container>
       </main>
 
