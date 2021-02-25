@@ -6,12 +6,13 @@ import Book from '../components/Book'
 import { bookListAction } from '../actions/bookActions'
 
 import { useDispatch, useSelector } from 'react-redux'
+import Paginationer from '../components/Paginationer'
 
 function HomePage() {
   const dispatch = useDispatch()
   const bookList = useSelector((state) => state.bookList)
 
-  const { loading, books } = bookList
+  const { loading, books, page, pages } = bookList
 
   useEffect(() => {
     dispatch(bookListAction())
@@ -29,6 +30,7 @@ function HomePage() {
           </Col>
         ))}
       </Row>
+      <Paginationer page={page} pages={pages} keyword='' />
     </div>
   )
 }

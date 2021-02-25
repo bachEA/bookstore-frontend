@@ -4,7 +4,12 @@ export const bookListReducer = (state = { books: [] }, action) => {
     case 'BOOK_LIST_REQUEST':
       return { loading: true, books: [] }
     case 'BOOK_LIST_REQUEST_SUCCESS':
-      return { loading: true, books: action.payload }
+      return {
+        loading: true,
+        books: action.payload,
+        page: action.payload.page,
+        pages: action.payload.pages,
+      }
     case 'BOOK_LIST_REQUEST_FAIL':
       return { loading: false, error: action.payload }
 
