@@ -6,7 +6,7 @@ export const bookListReducer = (state = { books: [] }, action) => {
     case 'BOOK_LIST_REQUEST_SUCCESS':
       return {
         loading: true,
-        books: action.payload,
+        books: action.payload.books,
         page: action.payload.page,
         pages: action.payload.pages,
       }

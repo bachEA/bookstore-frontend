@@ -2,24 +2,20 @@ import React from 'react'
 import { Pagination } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
-function Paginationer({ pages, page, keyword = '', isAdmin = false }) {
+function Paginationer({ current_page, total_pages, keyword = '' }) {
+  // retrieve search keyword from keyword + page number
   if (keyword) {
     keyword = keyword.split('?keyword=')[1].split('&')[0]
   }
 
   return (
-    pages > 1 && (
+    total_pages > 1 && (
       <Pagination>
-        {[...Array(pages).keys()].map((x) => (
-          <LinkContainer
-            key={x + 1}
-            to={
-              !isAdmin
-                ? `/?keyword=${keyword}&page=${x + 1}`
-                : `/admin/productlist/?keyword=${keyword}&page=${x + 1}`
-            }
-          >
-            <Pagination.Item active={x + 1 === page}>{x + 1}</Pagination.Item>
+        {[...Array(total_pages).keys()].map((x) => (
+          <LinkContainer key={x + 1} to={`/?keyword=${keyword}&page=${x + 1}`}>
+            <Pagination.Item active={x + 1 === current_page}>
+              {x + 1}
+            </Pagination.Item>
           </LinkContainer>
         ))}
       </Pagination>

@@ -1,14 +1,9 @@
 import React from 'react'
-import {
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  Button,
-  Container,
-} from 'react-bootstrap'
+import { Navbar, Nav, Container } from 'react-bootstrap'
 
 import { LinkContainer } from 'react-router-bootstrap'
+
+import SearchBox from './SearchBox'
 
 function Header() {
   return (
@@ -34,14 +29,7 @@ function Header() {
                 </Nav.Link>
               </LinkContainer>
             </Nav>
-            <Form inline>
-              <FormControl
-                type='text'
-                placeholder='Search'
-                className='mr-sm-2'
-              />
-              <Button variant='outline-success'>Search</Button>
-            </Form>
+            <SearchBox></SearchBox>
           </Navbar.Collapse>
         </Container>
       </Navbar>

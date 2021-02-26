@@ -8,15 +8,25 @@ import { bookListAction } from '../actions/bookActions'
 import { useDispatch, useSelector } from 'react-redux'
 import Paginationer from '../components/Paginationer'
 
-function HomePage() {
+function HomePage({ history }) {
   const dispatch = useDispatch()
   const bookList = useSelector((state) => state.bookList)
 
+  // const { loading, books, page, pages } = bookList
   const { loading, books, page, pages } = bookList
 
+  const current_page = page
+  const total_pages = pages
+
+  console.log(page)
+  console.log(books)
+  // to set keyword = querystring
+  let keyword = history.location.search
+  console.log(keyword)
+
   useEffect(() => {
-    dispatch(bookListAction())
-  }, [dispatch])
+    dispatch(bookListAction(keyword))
+  }, [dispatch, keyword])
 
   return (
     <div>
@@ -30,7 +40,11 @@ function HomePage() {
           </Col>
         ))}
       </Row>
-      <Paginationer page={page} pages={pages} keyword='' />
+      <Paginationer
+        current_page={current_page}
+        total_pages={total_pages}
+        keyword={keyword}
+      />
     </div>
   )
 }

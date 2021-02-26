@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-export const bookListAction = () => async (dispatch) => {
+export const bookListAction = (keyword = '') => async (dispatch) => {
   try {
     dispatch({ type: 'BOOK_LIST_REQUEST' })
 
-    const url = 'http://127.0.0.1:8000/api/v1/books/'
+    const url = `http://127.0.0.1:8000/api/v1/books/${keyword}`
 
     const { data } = await axios.get(url)
     dispatch({ type: 'BOOK_LIST_REQUEST_SUCCESS', payload: data })
